@@ -91,11 +91,20 @@ var upperCasedCharacters = [
 // Function to prompt user for password options
 function getPasswordOptions() {
   let charCount = prompt("How many characters would you like your password to contain?");
+  if(charCount < 10){
+    alert("The Password length must be at least 10 characters");
+    return;
+  } else if(charCount > 64){
+    alert("The Password length must be less than 65 characters");
+    return;
+  }
   let shouldAddSpecialChar = confirm("Click OK to confirm including special characters");
   let shouldAddNumericChar = confirm("Click OK to confirm including numeric characters");
   let shouldAddLowercaseChar = confirm("Click OK to confirm including lowercase characters");
   let shouldAddUppercaseChar = confirm("Click OK to confirm including uppercase characters");
 }
+
+
 
 // Function for getting a random element from an array
 function getRandom(arr) {
