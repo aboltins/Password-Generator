@@ -91,9 +91,12 @@ var upperCasedCharacters = [
 //An array that stores possible characters for the password, depending on users chosen char. types.
 let charactersToUseForPassword = [];
 
+// A variable that stores the Character count chosen by the user for the password.
+let charCount;
+
 // Function to prompt user for password options
 function getPasswordOptions() {
-  let charCount = prompt("How many characters would you like your password to contain?");
+  charCount = prompt("How many characters would you like your password to contain?");
 
   // if statements checks if user violates password length restrictions and then alerts user accordingly.
   if(charCount < 10){
@@ -133,12 +136,17 @@ function getPasswordOptions() {
 
 // Function for getting a random element from an array
 function getRandom(arr) {
-  
+  return arr[Math.floor(Math.random() * arr.length)];
 }
 
 // Function to generate password with user input
 function generatePassword() {
   getPasswordOptions();
+  
+  // Checks if charactersToUseForPassword array isn't empty.
+  if(charactersToUseForPassword.length == 0) {
+    return;
+  }
 }
 
 // Get references to the #generate element
