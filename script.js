@@ -88,9 +88,12 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+let chosenCharTypes = [];
+
 // Function to prompt user for password options
 function getPasswordOptions() {
   let charCount = prompt("How many characters would you like your password to contain?");
+
   if(charCount < 10){
     alert("The Password length must be at least 10 characters");
     return;
@@ -98,17 +101,35 @@ function getPasswordOptions() {
     alert("The Password length must be less than 65 characters");
     return;
   }
+
   let shouldAddSpecialChar = confirm("Click OK to confirm including special characters");
   let shouldAddNumericChar = confirm("Click OK to confirm including numeric characters");
   let shouldAddLowercaseChar = confirm("Click OK to confirm including lowercase characters");
   let shouldAddUppercaseChar = confirm("Click OK to confirm including uppercase characters");
+
+  if(!shouldAddLowercaseChar && !shouldAddNumericChar && !shouldAddSpecialChar && !shouldAddUppercaseChar){
+    alert("Must select at least 1 character type");
+    return;
+  }
+
+  if (shouldAddSpecialChar) {
+    chosenCharTypes.push(specialCharacters);
+  }
+  if (shouldAddNumericChar) {
+    chosenCharTypes.push(numericCharacters);
+  }
+  if (shouldAddLowercaseChar) {
+    chosenCharTypes.push(lowerCasedCharacters);
+  }
+  if (shouldAddUppercaseChar) {
+    chosenCharTypes.push(upperCasedCharacters);
+  }
+
 }
-
-
 
 // Function for getting a random element from an array
 function getRandom(arr) {
-
+  
 }
 
 // Function to generate password with user input
