@@ -88,12 +88,14 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+//An array that stores possible characters for the password, depending on users chosen char. types.
 let charactersToUseForPassword = [];
 
 // Function to prompt user for password options
 function getPasswordOptions() {
   let charCount = prompt("How many characters would you like your password to contain?");
 
+  // if statements checks if user violates password length restrictions and then alerts user accordingly.
   if(charCount < 10){
     alert("The Password length must be at least 10 characters");
     return;
@@ -102,16 +104,19 @@ function getPasswordOptions() {
     return;
   }
 
+  // prompts user to select desired character types to use for password and stores this into variables.
   let shouldAddSpecialChar = confirm("Click OK to confirm including special characters");
   let shouldAddNumericChar = confirm("Click OK to confirm including numeric characters");
   let shouldAddLowercaseChar = confirm("Click OK to confirm including lowercase characters");
   let shouldAddUppercaseChar = confirm("Click OK to confirm including uppercase characters");
 
+  // if statement alerting user accordingly if none of the character types have been chosen.
   if(!shouldAddLowercaseChar && !shouldAddNumericChar && !shouldAddSpecialChar && !shouldAddUppercaseChar){
     alert("Must select at least 1 character type");
     return;
   }
 
+  // based on if user has chosen character type, it's added to the charactersToUseForPassword array.
   if (shouldAddSpecialChar) {
     charactersToUseForPassword = charactersToUseForPassword.concat(specialCharacters);
   }
