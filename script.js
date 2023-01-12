@@ -142,11 +142,22 @@ function getRandom(arr) {
 // Function to generate password with user input
 function generatePassword() {
   getPasswordOptions();
-  
+
   // Checks if charactersToUseForPassword array isn't empty.
   if(charactersToUseForPassword.length == 0) {
-    return;
+    return "";
   }
+  
+  // Creates a password variable that will store the final users password.
+  let password = "";
+
+  // A for loop that executes as many times as the number of characters chosen by the user for the password. 
+  // On each loop it will generate a random character by calling the getRandom function and concatanated to the password.
+  for (let i = 0; i < charCount; i++) {
+    password = password.concat(getRandom(charactersToUseForPassword));
+  }
+
+  return password;
 }
 
 // Get references to the #generate element
@@ -154,6 +165,8 @@ var generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
+  // Sets characters to use for password to an empty array.
+  charactersToUseForPassword = [];
   var password = generatePassword();
   var passwordText = document.querySelector('#password');
 
