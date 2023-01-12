@@ -88,7 +88,7 @@ var upperCasedCharacters = [
   'Z'
 ];
 
-let chosenCharTypes = [];
+let charactersToUseForPassword = [];
 
 // Function to prompt user for password options
 function getPasswordOptions() {
@@ -113,18 +113,17 @@ function getPasswordOptions() {
   }
 
   if (shouldAddSpecialChar) {
-    chosenCharTypes.push(specialCharacters);
+    charactersToUseForPassword = charactersToUseForPassword.concat(specialCharacters);
   }
   if (shouldAddNumericChar) {
-    chosenCharTypes.push(numericCharacters);
+    charactersToUseForPassword = charactersToUseForPassword.concat(numericCharacters);
   }
   if (shouldAddLowercaseChar) {
-    chosenCharTypes.push(lowerCasedCharacters);
+    charactersToUseForPassword = charactersToUseForPassword.concat(lowerCasedCharacters);
   }
   if (shouldAddUppercaseChar) {
-    chosenCharTypes.push(upperCasedCharacters);
+    charactersToUseForPassword = charactersToUseForPassword.concat(upperCasedCharacters);
   }
-
 }
 
 // Function for getting a random element from an array
